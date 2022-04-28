@@ -5,28 +5,43 @@
 #                                                      +:+                     #
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/03/12 15:41:57 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/04/26 14:42:49 by rnijhuis      ########   odam.nl          #
+#    Created: 2022/04/25 22:41:11 by rubennijhui   #+#    #+#                  #
+#    Updated: 2022/04/28 22:07:13 by rnijhuis      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
+
+#=====================================#
+#========== Setup variables ==========#
+#=====================================#
+
+ifdef CODAM
+	CRITERION_DIR = -L /Users/$(USER)/.brew/Cellar/criterion/2.4.0_1/lib/
+	CRITERION_INC = -I /Users/$(USER)/.brew/Cellar/criterion/2.4.0_1/include 
+else
+	CRITERION_DIR = -L /usr/local/Cellar/criterion/2.4.0_1/lib/
+	CRITERION_INC = -I /usr/local/Cellar/criterion/2.4.0_1/include
+endif
 
 #=====================================#
 #========= General variables =========#
 #=====================================#
 
-NAME := libvec
-INCLUDE_DIR := include
+NAME := bin/tester
+INCLUDE_DIR := ../include
 SRC_DIR := src
 OBJS_DIR := objs
-OUTPUT := $(NAME).a
 
 #=====================================#
 #============ Input files ============#
 #=====================================#
 
-INC = -I $(INCLUDE_DIR)
+LIBS := ../libvec.a
 
-SRCS =  main.c
+LIBS_HEADERS := $(CRITERION_INC)
+
+INC := -I $(INCLUDE_DIR) $(LIBS_HEADERS)
+
+SRCS :=	set_value.c
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
@@ -35,8 +50,8 @@ OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 #=====================================#
 
 CC = gcc
-CFLAGS = -Wall -Wextra -g $(INC)
-LDFLAGS = 
+CFLAGS = -Wall -Werror -Wextra $(INC)
+LDFLAGS = $(CRITERION_DIR) -lcriterion
 
 #=====================================#
 #=============== Rules ===============#
@@ -46,28 +61,25 @@ objs/%.o:src/%.c
 	@mkdir -p $(dir $@)
 	@$(CC) -c $(CFLAGS) -o $@ $^
 	@echo "🔨 Compiling: $^"
-
+	
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@ar -cr $(OUTPUT) $(OBJS)
-	@echo "✅ Built $(NAME) \n"
+$(NAME):$(OBJS) $(LIBS)
+	@$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $(NAME)
+	@echo "✅ Built $(NAME)"
+
+run: $(NAME) $(LIBS)
+	@./$(NAME)
+
+../libvec.a:
+	@make -C ../
 
 clean:
 	@rm -rf $(OBJS_DIR)
-	@echo "🧹 Done cleaning objects"
-
-get_src_files:
-	@find $(SRC_DIR) | cut -b 5-
-
-test:
-	@make run -C tests/
 
 fclean: clean
-	@rm -f $(NAME).a
-	@make fclean -C tests/
-	@echo "🧹 Done cleaning archive"
+	@rm -f $(NAME)
 
-re: fclean all
+re: fclean all run
 
-.PHONY: all clean fclean re 
+.PHONY: all re run clean fclean

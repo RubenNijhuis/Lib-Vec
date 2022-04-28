@@ -2,3 +2,7 @@
 *.o
 *.a
 *.out
+/objs
+/objects
+.vscode/
+compile_commands.json
