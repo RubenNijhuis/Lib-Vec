@@ -1,26 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lib_vec.h                                          :+:    :+:            */
+/*   libvec.h                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/04/29 19:31:42 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/04/30 14:49:32 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_VEC_H
-# define LIB_VEC_H
+#ifndef LIBVEC_H
+# define LIBVEC_H
 
-typedef struct s_vec
-{
-	int			values[3];
-}t_vec;
+/*
+	Vector made of unions
+	Meant to be used for positions,
+	orientations and colors
+	x,y,z || r,g,b
+*/
+typedef struct s_vec3i {
+	union {
+		int	x;
+		int	r;
+	};
+	union {
+		int	y;
+		int	g;
+	};
+	union {
+		int	z;
+		int	b;
+	};
+}	t_vec3i;
 
-t_vec	create_vec(int values, unsigned int size);
-void	add_vec(t_vec *vec1, t_vec *vec2);
-void	subtract_vec(t_vec *vec1, t_vec *vec2);
-void	print_vec(t_vec *vec);
+/*
+	vec with size for 3 floats
+*/
+typedef struct s_vec3f {
+	float	x;
+	float	y;
+	float	z;
+}	t_vec3f;
+
+/*
+	General vector with "unlimited" size 
+	and reallocation when adding more elements
+*/
+typedef struct s_vec {
+	void	*data;
+	int		length;
+	int		capacity;
+	int		elem_size;
+}	t_vec;
 
 #endif
