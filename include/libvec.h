@@ -6,19 +6,17 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/15 13:52:49 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/05/15 23:31:12 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBVEC_H
 # define LIBVEC_H
 
-/*
-	Vector made of unions
-	Meant to be used for positions,
-	orientations and colors
-	x,y,z || r,g,b
-*/
+# include <stdlib.h>
+
+// Token definitions
+enum e_vec_type { vec_int, vec_float };
 typedef struct s_vec3i {
 	union {
 		int	x;
@@ -34,9 +32,6 @@ typedef struct s_vec3i {
 	};
 }	t_vec3i;
 
-/*
-	vec with size for 3 floats
-*/
 typedef struct s_vec3f {
 	float	x;
 	float	y;
@@ -44,14 +39,14 @@ typedef struct s_vec3f {
 }	t_vec3f;
 
 /*
-	General vector with "unlimited" size 
-	and reallocation when adding more elements
+General vector with "unlimited" size 
+and reallocation when adding more elements
 */
 typedef struct s_vec {
 	void	*data;
-	int		length;
-	int		capacity;
-	int		elem_size;
+	int32_t	length;
+	int32_t	capacity;
+	int32_t	elem_size;
 }	t_vec;
 
 float	get_vec3f_len(t_vec3f vec);

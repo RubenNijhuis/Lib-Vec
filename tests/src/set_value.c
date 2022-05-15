@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 22:42:56 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/15 14:01:55 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/05/15 23:30:53 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 // Testing lib
 #include <criterion/criterion.h>
 
-// Test(addition, basic) {
 // 	t_vec *main_vec;
 // 	long values[3] = {1, 1, 1};
 // 	main_vec = create_vec(values, 3);
