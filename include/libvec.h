@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/04/30 14:49:32 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/05/15 13:52:49 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ typedef struct s_vec {
 	int		capacity;
 	int		elem_size;
 }	t_vec;
+
+float	get_vec3f_len(t_vec3f vec);
+void	multiply_vec3f(t_vec3f *vec, float scalar);
 
 #endif
