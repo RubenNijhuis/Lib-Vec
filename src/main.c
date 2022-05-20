@@ -6,43 +6,58 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/15 23:37:00 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/05/20 18:39:05 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libvec.h"
-#include <math.h>
-#include <stdint.h>
-#include <stdlib.h>
 
-float	get_vec3f_len(t_vec3f vec)
+#include <math.h> /* sqrt */
+
+/* returns the dot product of vec */
+float	vec3f_dot(const t_vec3f vec)
 {
-	float	vec_len;
-	float	x;
-	float	y;
-	float	z;
-
-	x = vec.x;
-	y = vec.y;
-	z = vec.z;
-	vec_len = sqrt((x * x) + (y * y) + (z * z));
-	return (vec_len);
+	return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
 }
 
-t_vec3f	*make_vec3f_from_sum(t_vec3f *vec_primary, t_vec3f *vec_secondary)
+/* returns the magnitude/length of a vector. */
+float	vec3f_length(const t_vec3f vec)
 {
-	t_vec3f	*new_vec;
-
-	new_vec = malloc(1 * sizeof(t_vec3f));
-	if (new_vec == NULL)
-		return (NULL);
-	new_vec->x = (vec_primary->x + vec_secondary->x);
-	new_vec->x = (vec_primary->y + vec_secondary->y);
-	new_vec->x = (vec_primary->z + vec_secondary->z);
-	return (new_vec);
+	return (sqrt(vec3f_dot(vec)));
 }
 
-void	multiply_vec3f(t_vec3f *vec, float scalar)
+/* sum up two vectors.
+ * TODO: is removing the const on a, doing the operation on a, and returning
+ * a faster? Or pass by pointers? */
+t_vec3f	vec3f_sum(const t_vec3f a, const t_vec3f b)
+{
+	t_vec3f	vec;
+
+	vec.x = a.x + b.x;
+	vec.y = a.y + b.y;
+	vec.z = a.z + b.z;
+	return (vec);
+}
+
+/* normalizes vector vec */
+void	vec3f_normalize(t_vec3f *vec)
+{
+	const float	invlen = 1.0f / vec3f_length(*vec);
+
+	vec->x *= invlen;
+	vec->y *= invlen;
+	vec->z *= invlen;
+}
+
+/* vec += b */
+void	vec3f_translate(t_vec3f *vec, const t_vec3f b)
+{
+	vec->x += b.x;
+	vec->y += b.y;
+	vec->z += b.z;
+}
+
+void	vec3f_mutliply_scalar(t_vec3f *vec, const float scalar)
 {
 	vec->x *= scalar;
 	vec->y *= scalar;

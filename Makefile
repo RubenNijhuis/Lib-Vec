@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/12 15:41:57 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/05/01 23:08:35 by rubennijhui   ########   odam.nl          #
+#    Updated: 2022/05/20 18:41:54 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,8 +49,10 @@ objs/%.o:src/%.c
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@ar -cr $(OUTPUT) $(OBJS)
+$(NAME): $(OUTPUT)
+
+$(OUTPUT): $(OBJS)
+	@ar -cr $@ $^
 	@echo "✅ Built $(NAME) \n"
 
 clean:
@@ -76,4 +78,4 @@ norm:
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re $(NAME)

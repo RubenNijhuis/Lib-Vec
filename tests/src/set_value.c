@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 22:42:56 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/15 23:30:53 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/05/20 18:40:42 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@
 // 	cr_expect(get_vec3f_len(test_vec) == 3.741657, "Expected the vec length to be the sqrt of [1,2,3]");
 // }
 
-Test(multiply_vec3f, passing) {
+// TODO: write more tests
+
+Test(vec3f_mutliply_scalar, passing) {
 	t_vec3f test_vec;
 
 	test_vec.x = 2;
@@ -64,10 +66,13 @@ Test(multiply_vec3f, passing) {
 	test_vec.z = 2;
 
 	float scalar = 3;
-	multiply_vec3f(&test_vec, scalar);
-	cr_expect(test_vec.x == 6.0f, "Expected the new value to be 6");
+	vec3f_mutliply_scalar(&test_vec, scalar);
+	cr_expect(test_vec.x == 6.0f, "Expected new x value to be 6");
+	cr_expect(test_vec.y == 6.0f, "Expected new y value to be 6");
+	cr_expect(test_vec.z == 6.0f, "Expected new z value to be 6");
 }
 
+// TODO: tests two thinks at once, should just test one instead
 Test(normalize_vector, passing) {
 	t_vec3f test_vec;
 
@@ -75,8 +80,7 @@ Test(normalize_vector, passing) {
 	test_vec.y = 3;
 	test_vec.z = 4;
 
-	float inv_vec_len = 1 / get_vec3f_len(test_vec);
-	multiply_vec3f(&test_vec, inv_vec_len);
+	vec3f_normalize(&test_vec);
 
-	cr_expect(get_vec3f_len(test_vec) == 1.0f, "Expected the vector length to be 1");
+	cr_expect(vec3f_length(test_vec) == 1.0f, "Expected the vector length to be 1");
 }
