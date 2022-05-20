@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 22:42:56 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/20 18:40:42 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/05/20 19:26:16 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ Test(vec3f_mutliply_scalar, passing) {
 	test_vec.z = 2;
 
 	float scalar = 3;
-	vec3f_mutliply_scalar(&test_vec, scalar);
+	vec3f_multiply_scalar(&test_vec, scalar);
 	cr_expect(test_vec.x == 6.0f, "Expected new x value to be 6");
 	cr_expect(test_vec.y == 6.0f, "Expected new y value to be 6");
 	cr_expect(test_vec.z == 6.0f, "Expected new z value to be 6");
