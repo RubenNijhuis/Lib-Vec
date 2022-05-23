@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/20 19:25:35 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/05/23 20:43:53 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,19 @@ typedef struct s_vec3f {
 /*
 General vector with "unlimited" size 
 and reallocation when adding more elements
-*/
-/*typedef struct s_vec {
+typedef struct s_vec {
 	void	*data;
 	int32_t	length;
 	int32_t	capacity;
 	int32_t	elem_size;
-}	t_vec;*/
+}t_vec;
+*/
 
 float	vec3f_dot(const t_vec3f vec);
 float	vec3f_length(const t_vec3f vec);
 
 t_vec3f	vec3f_sum(const t_vec3f a, const t_vec3f b);
+t_vec3f	vec3f_subtract(const t_vec3f a, const t_vec3f b);
 
 void	vec3f_normalize(t_vec3f *vec);
 void	vec3f_translate(t_vec3f *vec, const t_vec3f b);

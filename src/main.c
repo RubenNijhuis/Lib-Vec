@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/20 18:39:05 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/05/23 20:43:45 by rubennijhui   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ t_vec3f	vec3f_sum(const t_vec3f a, const t_vec3f b)
 	return (vec);
 }
 
+t_vec3f	vec3f_subtract(const t_vec3f a, const t_vec3f b)
+{
+	t_vec3f	vec;
+
+	vec.x = a.x - b.x;
+	vec.y = a.y - b.y;
+	vec.z = a.z - b.z;
+	return (vec);
+}
+
 /* normalizes vector vec */
 void	vec3f_normalize(t_vec3f *vec)
 {
@@ -57,7 +67,7 @@ void	vec3f_translate(t_vec3f *vec, const t_vec3f b)
 	vec->z += b.z;
 }
 
-void	vec3f_mutliply_scalar(t_vec3f *vec, const float scalar)
+void	vec3f_multiply_scalar(t_vec3f *vec, const float scalar)
 {
 	vec->x *= scalar;
 	vec->y *= scalar;
