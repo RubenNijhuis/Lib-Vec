@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/24 14:20:41 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/05/24 15:30:55 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct s_vec {
 	int32_t	elem_size;
 }t_vec;
 */
+
+t_vec3f	vec3f(float x, float y, float z);
 
 float	vec3f_dot(const t_vec3f a, const t_vec3f b);
 float	vec3f_length(const t_vec3f vec);

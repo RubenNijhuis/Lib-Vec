@@ -6,13 +6,24 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/24 14:20:01 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/05/24 15:37:02 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libvec.h"
 
 #include <math.h> /* sqrt */
+
+/* returns a vec3f with the position (x, y, z) */
+t_vec3f	vec3f(float x, float y, float z)
+{
+	t_vec3f	pos;
+
+	pos.x = x;
+	pos.y = y;
+	pos.z = z;
+	return (pos);
+}
 
 /* returns the dot product of vec */
 float	vec3f_len_sq(const t_vec3f vec)
