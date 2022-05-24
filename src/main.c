@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/23 20:43:45 by rubennijhui   ########   odam.nl         */
+/*   Updated: 2022/05/24 14:20:01 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,21 @@
 #include <math.h> /* sqrt */
 
 /* returns the dot product of vec */
-float	vec3f_dot(const t_vec3f vec)
+float	vec3f_len_sq(const t_vec3f vec)
 {
 	return (vec.x * vec.x + vec.y * vec.y + vec.z * vec.z);
+}
+
+/* Returns the dot product of two vectors */
+float	vec3f_dot(const t_vec3f a, const t_vec3f b)
+{
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
 /* returns the magnitude/length of a vector. */
 float	vec3f_length(const t_vec3f vec)
 {
-	return (sqrt(vec3f_dot(vec)));
+	return (sqrt(vec3f_len_sq(vec)));
 }
 
 /* sum up two vectors.
