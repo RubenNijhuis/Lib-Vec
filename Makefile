@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/12 15:41:57 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/05/20 18:41:54 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/05/24 14:12:06 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ OUTPUT := $(NAME).a
 INC = -I $(INCLUDE_DIR)
 
 SRCS =  main.c
+HEADERS = include/libvec.h
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
@@ -42,9 +43,9 @@ LDFLAGS =
 #=============== Rules ===============#
 #=====================================#
 
-objs/%.o:src/%.c
+objs/%.o: src/%.c $(HEADERS)
 	@mkdir -p $(dir $@)
-	@$(CC) -c $(CFLAGS) -o $@ $^
+	@$(CC) -c $(CFLAGS) -o $@ $<
 	@echo "🔨 Compiling: $^"
 
 all: $(NAME)
