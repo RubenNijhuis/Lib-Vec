@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/12 15:41:57 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/05/25 14:15:17 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/05/25 19:38:27 by rnijhuis      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ OUTPUT := $(NAME).a
 
 INC = -I $(INCLUDE_DIR)
 
-SRCS =  main.c
+SRCS =  main.c \
+		basic.c 
+	
 HEADERS = include/libvec.h
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
@@ -36,7 +38,7 @@ OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 #=====================================#
 
 CC = gcc
-CFLAGS = -Wall -Wextra -g $(INC)
+CFLAGS = -Wall -Wextra -Werror -g $(INC)
 LDFLAGS = 
 
 #=====================================#

@@ -6,26 +6,13 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/25 15:25:02 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/05/25 19:37:46 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libvec.h"
 
 #include <math.h> /* sqrt */
-
-/* returns a vec3f with the position (x, y, z) */
-t_vec3f	vec3f(float x, float y, float z)
-{
-	const t_vec3f	pos = {
-		x,
-		y,
-		z,
-		0.0f
-	};
-
-	return (pos);
-}
 
 /* returns the dot product of vec */
 /* there is probably some crazy intrinsic builtin which makes this faster,
@@ -43,33 +30,6 @@ float	vec3f_dot(const t_vec3f a, const t_vec3f b)
 	const t_vec3f	product = a * b;
 
 	return (product[0] + product[1] + product[2]);
-}
-
-/* returns the magnitude/length of a vector. */
-float	vec3f_length(const t_vec3f vec)
-{
-	return (sqrt(vec3f_len_sq(vec)));
-}
-
-/* sum up two vectors.
- * TODO: is removing the const on a, doing the operation on a, and returning
- * a faster? Or pass by pointers? */
-t_vec3f	vec3f_sum(const t_vec3f a, const t_vec3f b)
-{
-	return (a + b);
-}
-
-t_vec3f	vec3f_subtract(const t_vec3f a, const t_vec3f b)
-{
-	return (a - b);
-}
-
-/* normalizes vector vec */
-void	vec3f_normalize(t_vec3f *vec)
-{
-	const float	invlen = 1.0f / vec3f_length(*vec);
-
-	*vec *= invlen;
 }
 
 /* vec += b */
