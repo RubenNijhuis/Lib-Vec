@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/04/25 22:41:11 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/04/28 22:07:13 by rnijhuis      ########   odam.nl          #
+#    Updated: 2022/05/25 14:15:02 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ endif
 
 NAME := bin/tester
 INCLUDE_DIR := ../include
+PARENT_SRC_DIR := ../src
 SRC_DIR := src
 OBJS_DIR := objs
 
@@ -42,6 +43,8 @@ LIBS_HEADERS := $(CRITERION_INC)
 INC := -I $(INCLUDE_DIR) $(LIBS_HEADERS)
 
 SRCS :=	set_value.c
+HEADERS = $(INCLUDE_DIR)/libvec.h
+OTHER_DEPS = $(PARENT_SRC_DIR)/main.c
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
@@ -57,14 +60,14 @@ LDFLAGS = $(CRITERION_DIR) -lcriterion
 #=============== Rules ===============#
 #=====================================#
 
-objs/%.o:src/%.c
+objs/%.o: src/%.c $(HEADERS)
 	@mkdir -p $(dir $@)
-	@$(CC) -c $(CFLAGS) -o $@ $^
-	@echo "🔨 Compiling: $^"
+	@$(CC) -c $(CFLAGS) -o $@ $<
+	@echo "🔨 Compiling: $<"
 	
 all: $(NAME)
 
-$(NAME):$(OBJS) $(LIBS)
+$(NAME): $(OBJS) $(LIBS)
 	@$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $(NAME)
 	@echo "✅ Built $(NAME)"
 

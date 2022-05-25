@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/12 15:41:57 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/05/24 14:12:06 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/05/25 14:15:17 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,7 +63,7 @@ clean:
 get_src_files:
 	@find $(SRC_DIR) | cut -b 5-
 
-test:
+test: $(NAME)
 	@make run -C tests/
 
 fclean: clean

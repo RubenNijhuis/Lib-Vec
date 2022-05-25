@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/24 15:30:55 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/05/25 15:30:25 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ typedef struct s_vec3i {
 	};
 }	t_vec3i;
 
-typedef struct s_vec3f {
-	float	x;
-	float	y;
-	float	z;
-}	t_vec3f;
+/* le epic vector compiler attribute */
+/* the reason we use 4 components instead of 3 is because the vector attibrute
+ * requires size to be a power of two.
+ * access elements individually like an array, e.g. pos[1] for y value. 
+ * the fourth element, "w", should always be 0 to prevent errors. */
+typedef float	t_vec3f __attribute__ ((vector_size ((sizeof(float) * 4))));
 
 /*
 General vector with "unlimited" size 
@@ -59,5 +60,7 @@ t_vec3f	vec3f_subtract(const t_vec3f a, const t_vec3f b);
 void	vec3f_normalize(t_vec3f *vec);
 void	vec3f_translate(t_vec3f *vec, const t_vec3f b);
 void	vec3f_multiply_scalar(t_vec3f *vec, const float scalar);
+
+int		vec_eq(const t_vec3f a, const t_vec3f b);
 
 #endif
