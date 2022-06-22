@@ -6,19 +6,12 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/06/22 17:25:57 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/06/22 17:35:37 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBVEC_H
 # define LIBVEC_H
-
-// Token definitions
-typedef enum e_vec_type
-{
-	vec_int,
-	vec_float
-}	t_vec_type;
 
 /* le epic vector compiler attribute */
 /* the reason we use 4 components instead of 3 is because the vector attibrute
