@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/06/22 17:23:30 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/06/22 17:25:57 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,6 @@ typedef enum e_vec_type
 	vec_int,
 	vec_float
 }	t_vec_type;
-
-typedef struct s_vec3i {
-	union {
-		int	x;
-		int	r;
-	};
-	union {
-		int	y;
-		int	g;
-	};
-	union {
-		int	z;
-		int	b;
-	};
-}	t_vec3i;
 
 /* le epic vector compiler attribute */
 /* the reason we use 4 components instead of 3 is because the vector attibrute
