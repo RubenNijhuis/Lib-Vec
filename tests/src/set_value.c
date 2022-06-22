@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 22:42:56 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/25 15:22:44 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/06/22 17:18:04 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Test(vec3f_constructor, passing)
 	cr_expect(test_vec[1] == 2.0f, "Expected new y value to be 2");
 	cr_expect(test_vec[2] == 2.0f, "Expected new z value to be 2");
 	cr_expect(test_vec[3] == 0.0f, "Expected new z value to be 0");
-	cr_expect(vec_eq(test_vec, (t_vec3f){ 2, 2, 2, 0 }), "expected vecs to be equal");
+	cr_expect(vec3f_eq(test_vec, (t_vec3f){ 2, 2, 2, 0 }), "expected vecs to be equal");
 }
 
 Test(vec3f_mutliply_scalar, passing)
@@ -42,7 +42,7 @@ Test(vec3f_mutliply_scalar, passing)
 
 	float scalar = 3;
 	vec3f_multiply_scalar(&test_vec, scalar);
-	cr_expect(vec_eq(test_vec, vec3f(6, 6, 6)), "expected vec to be (6, 6, 6)");
+	cr_expect(vec3f_eq(test_vec, vec3f(6, 6, 6)), "expected vec to be (6, 6, 6)");
 }
 
 // TODO: tests two thinks at once, should just test one instead

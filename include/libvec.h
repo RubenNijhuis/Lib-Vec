@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/05/25 19:34:10 by rnijhuis      ########   odam.nl         */
+/*   Updated: 2022/06/22 17:18:33 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,6 @@ void	vec3f_translate(t_vec3f *vec, const t_vec3f b);
 void	vec3f_multiply_scalar(t_vec3f *vec, const float scalar);
 
 // Assertion
-int		vec_eq(const t_vec3f a, const t_vec3f b);
+int		vec3f_eq(const t_vec3f a, const t_vec3f b);
 
 #endif
