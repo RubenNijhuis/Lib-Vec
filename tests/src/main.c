@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   set_value.c                                        :+:    :+:            */
+/*   main.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 22:42:56 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/06/22 17:18:04 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/06/22 17:22:47 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,6 @@
 #include <criterion/criterion.h>
 
 // TODO: write more tests
-
-// void	print_vec(const t_vec3f v)
-// {
-// 	printf("(%f, %f, %f, %f)\n", v[0], v[1], v[2], v[3]);
-// }
 
 Test(vec3f_constructor, passing)
 {
@@ -61,4 +56,14 @@ Test(vec3f_dot_test, passing)
 	t_vec3f b = { 0, 2, 5, 0 };
 
 	cr_expect(vec3f_dot(a, b) == 0 + 8 + 25, "invalid dot product");
+}
+
+Test(vec3f_cross_test, passing)
+{
+	t_vec3f a = { 0, 0, 1, 0 };
+	t_vec3f b = { 1, 0, 0, 0 };
+
+	t_vec3f c = vec3f_cross(a, b);
+
+	cr_expect(vec3f_eq(c, vec3f(0, 1, 0)), "invalid cross product");
 }

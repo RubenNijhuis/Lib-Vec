@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/04/25 22:41:11 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/05/25 14:15:02 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/06/22 17:21:59 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ LIBS_HEADERS := $(CRITERION_INC)
 
 INC := -I $(INCLUDE_DIR) $(LIBS_HEADERS)
 
-SRCS :=	set_value.c
+SRCS :=	main.c
 HEADERS = $(INCLUDE_DIR)/libvec.h
 OTHER_DEPS = $(PARENT_SRC_DIR)/main.c
 
@@ -68,7 +68,7 @@ objs/%.o: src/%.c $(HEADERS)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS)
-	@$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $(NAME)
+	@$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $@
 	@echo "✅ Built $(NAME)"
 
 run: $(NAME) $(LIBS)
