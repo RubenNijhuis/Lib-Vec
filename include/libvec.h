@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/06/22 17:18:33 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/06/22 17:23:30 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_vec3f	vec3f(float x, float y, float z);
 
 // Arithmatic
 float	vec3f_dot(const t_vec3f a, const t_vec3f b);
+t_vec3f	vec3f_cross(t_vec3f a, t_vec3f b);
 float	vec3f_length(const t_vec3f vec);
 float	vec3f_len_sq(const t_vec3f vec);
 
