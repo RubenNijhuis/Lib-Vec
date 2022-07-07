@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/04/25 22:41:11 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/06/22 17:21:59 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/07/07 17:18:20 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ objs/%.o: src/%.c $(HEADERS)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS)
-	@$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $@
+	@$(CC) $(OBJS) $(LDFLAGS) $(LIBS) -o $@ -lm
 	@echo "✅ Built $(NAME)"
 
 run: $(NAME) $(LIBS)
