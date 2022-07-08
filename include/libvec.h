@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/07 17:11:30 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/07/08 14:35:28 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	vec3f_multiply_scalar(t_vec3f *vec, const float scalar);
 
 double	vec3f_get_angle(const t_vec3f a, const t_vec3f b);
 double	vec3f_unit_get_angle(const t_vec3f a, const t_vec3f b);
+t_vec3f	vec3f_rotate_axis(const t_vec3f v, const t_vec3f axis,
+			const double angle);
 
 // Assertion
 int		vec3f_eq(const t_vec3f a, const t_vec3f b);

@@ -6,7 +6,7 @@
 /*   By: jobvan-d <jobvan-d@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/07/07 17:00:22 by jobvan-d      #+#    #+#                 */
-/*   Updated: 2022/07/07 17:20:20 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/07/08 14:16:49 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,20 @@ double	vec3f_unit_get_angle(const t_vec3f a, const t_vec3f b)
 
 	cos_angle = (double)vec3f_dot(a, b);
 	return (acos(cos_angle));
+}
+
+/* rotates vector v around axis axis with angle. AXIS MUST BE A UNIT VECTOR.
+ * you must see as the v as a point on a wheel and the axis as an axle.
+ * source: https://www.youtube.com/watch?v=OKr0YCj0BW4 */
+t_vec3f	vec3f_rotate_axis(const t_vec3f v, const t_vec3f axis,
+	const double angle)
+{
+	t_vec3f		d;
+	t_vec3f		r;
+	t_vec3f		r_new;
+
+	d = vec3f_dot(axis, v) * axis;
+	r = v - d;
+	r_new = r * (float)cos(angle) + vec3f_cross(axis, r) * (float)sin(angle);
+	return (d + r_new);
 }

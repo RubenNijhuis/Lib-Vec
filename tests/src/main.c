@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 22:42:56 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/07 17:18:03 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/07/08 14:34:55 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,22 @@ Test(vec3f_get_angle_test, passing)
 
 	angle = vec3f_get_angle(a, b);
 	cr_expect(roundf(angle * 100000) == roundf(M_PI_4 * 100000), "invalid angle %f", angle);
+}
+
+Test(vec3f_rotate_axis_test, passing)
+{
+	t_vec3f axis = vec3f(0, 1, 0);
+	t_vec3f v = vec3f(1, 0, 0);
+
+	t_vec3f result = vec3f_rotate_axis(v, axis, M_PI_2);
+	t_vec3f comp = vec3f(0, 0, -1.0f);
+
+	// printf("%f, %f, %f\n",  result[0], result[1], result[2]);
+	// printf("%f, %f, %f\n",  comp[0], comp[1], comp[2]);
+	// printf("%d, %d, %d\n",  comp[0] == result[0], comp[1] == result[1], comp[2] == result[2]);
+
+	// can't use vec3_eq because apparently result[0] isn't 0.0f. sigh.
+	// but it's smaller than it's epsilon, so it's practically 0.
+	cr_expect(result[0] < __FLT_EPSILON__ && result[1] < __FLT_EPSILON__ && result[2] == comp[2],
+		"invalid rotation %f, %f, %f", result[0], result[1], result[2]);
 }
