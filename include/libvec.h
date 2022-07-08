@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/07 17:11:30 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/07/08 10:44:57 by rnijhuis      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
  * access elements individually like an array, e.g. pos[1] for y value. 
  * the fourth element, "w", should always be 0 to prevent errors. */
 typedef float	t_vec3f __attribute__ ((vector_size ((sizeof(float) * 4))));
+
+typedef enum e_rotation_type
+{
+	rotate_x,
+	rotate_y,
+	rotate_z
+}	t_rotation_type;
+
+t_vec3f	rotate(t_rotation_type rotation, t_vec3f dir, float angle);
 
 // Create
 t_vec3f	vec3f(float x, float y, float z);
