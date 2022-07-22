@@ -6,12 +6,14 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:43 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/08 14:36:16 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/07/22 16:17:32 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBVEC_H
 # define LIBVEC_H
+
+# include <stdbool.h>
 
 /* le epic vector compiler attribute */
 /* the reason we use 4 components instead of 3 is because the vector attibrute
@@ -51,6 +53,7 @@ t_vec3f	vec3f_rotate_axis(const t_vec3f v, const t_vec3f axis,
 			const double angle);
 
 // Assertion
-int		vec3f_eq(const t_vec3f a, const t_vec3f b);
+bool	vec3f_eq(const t_vec3f a, const t_vec3f b);
+bool	vec3f_is_zero(const t_vec3f v);
 
 #endif

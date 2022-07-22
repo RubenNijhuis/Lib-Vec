@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/12 15:41:57 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/07/07 17:01:22 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/07/22 16:15:58 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ INC = -I $(INCLUDE_DIR)
 SRCS =  main.c \
 		cross.c \
 		basic.c \
-		angle.c
+		angle.c \
+		misc.c
 	
 HEADERS = include/libvec.h
 

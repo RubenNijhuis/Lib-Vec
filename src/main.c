@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/13 16:38:00 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/06/22 17:19:00 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/07/22 16:17:12 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	vec3f_multiply_scalar(t_vec3f *vec, const float scalar)
 }
 
 /* returns true if vectors a and b are equal */
-int	vec3f_eq(const t_vec3f a, const t_vec3f b)
+bool	vec3f_eq(const t_vec3f a, const t_vec3f b)
 {
 	return (a[0] == b[0]
 		&& a[1] == b[1]
