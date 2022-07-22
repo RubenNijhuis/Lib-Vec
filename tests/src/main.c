@@ -6,7 +6,7 @@
 /*   By: rubennijhuis <rubennijhuis@student.coda      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/25 22:42:56 by rubennijhui   #+#    #+#                 */
-/*   Updated: 2022/07/08 14:34:55 by jobvan-d      ########   odam.nl         */
+/*   Updated: 2022/07/22 18:38:00 by jobvan-d      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,11 @@ Test(vec3f_rotate_axis_test, passing)
 	// but it's smaller than it's epsilon, so it's practically 0.
 	cr_expect(result[0] < __FLT_EPSILON__ && result[1] < __FLT_EPSILON__ && result[2] == comp[2],
 		"invalid rotation %f, %f, %f", result[0], result[1], result[2]);
+}
+
+Test(vec3f_round, passing)
+{
+	t_vec3f	v = vec3f(4.524, 0.2f, 5.9f);
+	vec3f_round(&v);
+	cr_assert(vec3f_eq(v, vec3f(5, 0, 6)), "invalid round");
 }
