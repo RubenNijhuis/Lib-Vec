@@ -6,7 +6,7 @@
 #    By: rubennijhuis <rubennijhuis@student.coda      +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/03/12 15:41:57 by rubennijhui   #+#    #+#                  #
-#    Updated: 2022/07/22 16:15:58 by jobvan-d      ########   odam.nl          #
+#    Updated: 2022/07/22 18:57:38 by jobvan-d      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ SRCS =  main.c \
 		angle.c \
 		misc.c
 	
-HEADERS = include/libvec.h
+HEADERS = $(INCLUDE_DIR)/libvec.h
 
 OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 
@@ -41,15 +41,16 @@ OBJS = $(addprefix $(OBJS_DIR)/,$(SRCS:.c=.o))
 #=====================================#
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g $(INC)
+CFLAGS = -Wall -Wextra -Werror -g
+# -Ofast -march=native -mtune=native
 
 #=====================================#
 #=============== Rules ===============#
 #=====================================#
 
-objs/%.o: src/%.c $(HEADERS)
+$(OBJS_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	@mkdir -p $(dir $@)
-	@$(CC) -c $(CFLAGS) -o $@ $<
+	@$(CC) -c $(CFLAGS) $(INC) -o $@ $<
 	@echo "🔨 Compiling: $<"
 
 all: $(NAME)
